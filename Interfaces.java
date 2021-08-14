@@ -1,12 +1,20 @@
 package Interfaces;
 
-public interface Vehicle {
+interface Vehicle {
   void start();// By default these two methods are associated with public and abstract
                // modifiers
 
   void stop();
 
   int getNoOfWheels();
+
+  default void displaySpeed() {
+    // declaring this function that has a body without a modifier in an interface
+    // causes a compilation error because, these by default are public abstract and
+    // abstract methods cannot have a body. To resolve this the modifier - default
+    // is included
+    System.out.println("The speed is 40kmph");
+  }
 }
 
 class Car implements Vehicle {// The difference between class extension and implementing interface is A calss
@@ -61,11 +69,13 @@ public class Interfaces {
     car.start();
     car.stop();
     System.out.println("The number of wheels in the car are " + car.getNoOfWheels());
+    car.displaySpeed();
     // car.applyBrake();//This will be undefined for the type Vehicle
     Vehicle bike = new Bike();
     bike.start();
     bike.stop();
     System.out.println("The number of wheels in the bike are " + bike.getNoOfWheels());
+    bike.displaySpeed();
     // It is best practice to define an object of reference type of the Interface
     // and not the class that is implementing class. Say the blueprint of the class
     // i.e., the interface (Vehicle in this case) is given to somebody to develop a
