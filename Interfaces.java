@@ -14,6 +14,23 @@ interface Vehicle {
     // abstract methods cannot have a body. To resolve this the modifier - default
     // is included
     System.out.println("The speed is 40kmph");
+    putGas();
+  }
+
+  static void putGas() {
+    // this static method can be invoked by using Vehicle.putGas(), just like any
+    // other static method and also this can be called in the default method of the
+    // same interface
+    System.out.println("Message from static function" + ": " + "Please put gas");
+  }
+
+  private String displayMessage() {
+    // private methods can be declared in an interface but they cannot be overriden.
+    // They must only be used by other methods present in the interface
+    // Then the default method that is calling methods like this is known as an
+    // anchor method
+    return "New Notification";
+
   }
 }
 
